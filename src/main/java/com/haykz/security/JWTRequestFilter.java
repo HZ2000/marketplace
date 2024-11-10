@@ -10,7 +10,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -28,8 +27,8 @@ import java.io.IOException;
 @Component
 @AllArgsConstructor
 public class JWTRequestFilter extends OncePerRequestFilter {
-    private final RequestMatcher ignoredPaths = new AntPathRequestMatcher("/user/clothes/**");
 
+    private final RequestMatcher ignoredPaths;
     private final JWTUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
 
